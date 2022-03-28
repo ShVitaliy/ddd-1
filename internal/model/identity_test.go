@@ -8,7 +8,7 @@ import (
 
 func TestLocalIdParsing(t *testing.T) {
 	cases := []struct {
-		value  interface{}
+		value  any
 		result int
 		error  string
 	}{
@@ -28,7 +28,7 @@ func TestLocalIdParsing(t *testing.T) {
 
 	if bits.UintSize == 32 {
 		cases = append(cases, []struct {
-			value  interface{}
+			value  any
 			result int
 			error  string
 		}{
@@ -88,7 +88,7 @@ func TestLocalIdFrom(t *testing.T) {
 
 func TestGlobalIdParsing(t *testing.T) {
 	cases := []struct {
-		value  interface{}
+		value  any
 		result uuid.UUID
 		error  string
 	}{

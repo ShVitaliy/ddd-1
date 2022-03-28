@@ -9,7 +9,7 @@ import (
 
 type AbstractId interface {
 	Scalarable
-	GetIdentity() interface{}
+	GetIdentity() any
 }
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ type LocalId struct {
 	identity int
 }
 
-func (id *LocalId) GetIdentity() interface{} {
+func (id *LocalId) GetIdentity() any {
 	return id.identity
 }
 
@@ -29,11 +29,11 @@ func (id *LocalId) ToString() string {
 	return strconv.Itoa(id.identity)
 }
 
-func (id *LocalId) ToScalar() interface{} {
+func (id *LocalId) ToScalar() any {
 	return id.identity
 }
 
-func ParseLocalId(value interface{}) (*LocalId, error) {
+func ParseLocalId(value any) (*LocalId, error) {
 	var err error
 	var identity int
 	switch value.(type) {
@@ -78,7 +78,7 @@ checkCastIssue:
 	goto formLocalId
 }
 
-func LocalIdFrom(value interface{}) *LocalId {
+func LocalIdFrom(value any) *LocalId {
 	id, err := ParseLocalId(value)
 	if err != nil {
 		panic(err)
@@ -95,7 +95,7 @@ type GlobalId struct {
 	identity uuid.UUID
 }
 
-func (id *GlobalId) GetIdentity() interface{} {
+func (id *GlobalId) GetIdentity() any {
 	return id.identity
 }
 
@@ -103,7 +103,7 @@ func (id *GlobalId) ToString() string {
 	return id.identity.String()
 }
 
-func (id *GlobalId) ToScalar() interface{} {
+func (id *GlobalId) ToScalar() any {
 	return id.identity.String()
 }
 
@@ -111,7 +111,7 @@ func NewGlobalId() *GlobalId {
 	return &GlobalId{identity: uuid.New()}
 }
 
-func ParseGlobalId(value interface{}) (*GlobalId, error) {
+func ParseGlobalId(value any) (*GlobalId, error) {
 	var err error
 	var identity uuid.UUID
 	switch value.(type) {
@@ -128,7 +128,7 @@ func ParseGlobalId(value interface{}) (*GlobalId, error) {
 	return &GlobalId{identity: identity}, nil
 }
 
-func GlobalIdFrom(value interface{}) *GlobalId {
+func GlobalIdFrom(value any) *GlobalId {
 	id, err := ParseGlobalId(value)
 	if err != nil {
 		panic(err)

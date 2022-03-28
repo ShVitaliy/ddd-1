@@ -19,7 +19,7 @@ func ErrorToDomainError(err error) DomainError {
 	return DomainError{err: err.Error()}
 }
 
-func NewDomainError(format string, a ...interface{}) DomainError {
+func NewDomainError(format string, a ...any) DomainError {
 	return DomainError{err: fmt.Sprintf(format, a...)}
 }
 
@@ -35,7 +35,7 @@ func ErrorToInvalidStateError(err error) InvalidStateError {
 	return InvalidStateError{ErrorToDomainError(err)}
 }
 
-func NewInvalidStateError(format string, a ...interface{}) InvalidStateError {
+func NewInvalidStateError(format string, a ...any) InvalidStateError {
 	return InvalidStateError{NewDomainError(format, a...)}
 }
 
@@ -51,7 +51,7 @@ func ErrorToInvalidArgumentError(err error) InvalidArgumentError {
 	return InvalidArgumentError{ErrorToDomainError(err)}
 }
 
-func NewInvalidArgumentError(format string, a ...interface{}) InvalidArgumentError {
+func NewInvalidArgumentError(format string, a ...any) InvalidArgumentError {
 	return InvalidArgumentError{NewDomainError(format, a...)}
 }
 
@@ -67,7 +67,7 @@ func ErrorToEntityNotFoundError(err error) EntityNotFoundError {
 	return EntityNotFoundError{ErrorToDomainError(err)}
 }
 
-func NewEntityNotFoundError(format string, a ...interface{}) EntityNotFoundError {
+func NewEntityNotFoundError(format string, a ...any) EntityNotFoundError {
 	return EntityNotFoundError{NewDomainError(format, a...)}
 }
 
@@ -83,7 +83,7 @@ func ErrorToDuplicateEntityError(err error) DuplicateEntityError {
 	return DuplicateEntityError{ErrorToDomainError(err)}
 }
 
-func NewDuplicateEntityError(format string, a ...interface{}) DuplicateEntityError {
+func NewDuplicateEntityError(format string, a ...any) DuplicateEntityError {
 	return DuplicateEntityError{NewDomainError(format, a...)}
 }
 
@@ -99,7 +99,7 @@ func ErrorToNotAuthenticatedError(err error) NotAuthenticatedError {
 	return NotAuthenticatedError{ErrorToDomainError(err)}
 }
 
-func NewNotAuthenticatedError(format string, a ...interface{}) NotAuthenticatedError {
+func NewNotAuthenticatedError(format string, a ...any) NotAuthenticatedError {
 	return NotAuthenticatedError{NewDomainError(format, a...)}
 }
 
@@ -115,6 +115,6 @@ func ErrorToAccessDeniedError(err error) AccessDeniedError {
 	return AccessDeniedError{ErrorToDomainError(err)}
 }
 
-func NewAccessDeniedError(format string, a ...interface{}) AccessDeniedError {
+func NewAccessDeniedError(format string, a ...any) AccessDeniedError {
 	return AccessDeniedError{NewDomainError(format, a...)}
 }

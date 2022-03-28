@@ -7,14 +7,14 @@ import (
 )
 
 func TestDomainErrorCreation(t *testing.T) {
-	errorConstructors := map[string]func(string, ...interface{}) error{
-		"domain":            func(format string, a ...interface{}) error { return NewDomainError(format, a...) },
-		"invalid state":     func(format string, a ...interface{}) error { return NewInvalidStateError(format, a...) },
-		"invalid argument":  func(format string, a ...interface{}) error { return NewInvalidArgumentError(format, a...) },
-		"entity not found":  func(format string, a ...interface{}) error { return NewEntityNotFoundError(format, a...) },
-		"duplicate entity":  func(format string, a ...interface{}) error { return NewDuplicateEntityError(format, a...) },
-		"not authenticated": func(format string, a ...interface{}) error { return NewNotAuthenticatedError(format, a...) },
-		"access denied":     func(format string, a ...interface{}) error { return NewAccessDeniedError(format, a...) },
+	errorConstructors := map[string]func(string, ...any) error{
+		"domain":            func(format string, a ...any) error { return NewDomainError(format, a...) },
+		"invalid state":     func(format string, a ...any) error { return NewInvalidStateError(format, a...) },
+		"invalid argument":  func(format string, a ...any) error { return NewInvalidArgumentError(format, a...) },
+		"entity not found":  func(format string, a ...any) error { return NewEntityNotFoundError(format, a...) },
+		"duplicate entity":  func(format string, a ...any) error { return NewDuplicateEntityError(format, a...) },
+		"not authenticated": func(format string, a ...any) error { return NewNotAuthenticatedError(format, a...) },
+		"access denied":     func(format string, a ...any) error { return NewAccessDeniedError(format, a...) },
 	}
 
 	for errorName, errorConstructor := range errorConstructors {
