@@ -12,6 +12,7 @@ func TestLocalIdParsing(t *testing.T) {
 		result int
 		error  string
 	}{
+		{1, 1, ""},
 		{int8(-3), -3, ""},
 		{uint8(255), 255, ""},
 		{int16(12), 12, ""},
