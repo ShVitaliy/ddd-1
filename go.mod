@@ -1,4 +1,4 @@
-module github.com/AlephTav/ddd-go
+module github.com/AlephTav/ddd
 
 go 1.18
 
